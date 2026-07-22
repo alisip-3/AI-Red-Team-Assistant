@@ -1,9 +1,7 @@
 # AI-Powered Vulnerability Reporter
 
-An automated Proof-of-Concept (PoC) and reporting tool that identifies web vulnerabilities, captures visual evidence, and generates professional penetration testing reports using a local Large Language Model (Ollama).
-
-## Project Overview
-This project was built to demonstrate the automation of a common security workflow: verifying a vulnerability and documenting it for developers. Inspired by **PortSwigger Web Security Academy** labs on Authentication and Session Management, this tool targets a custom-built **Flask** web application. 
+##  Overview
+An automated Proof-of-Concept (PoC) and reporting tool that identifies web vulnerabilities, captures visual evidence, and generates professional penetration testing reports using a local Large Language Model (Ollama). Inspired by **PortSwigger Web Security Academy** labs on Authentication and Session Management, this tool targets a custom-built **Flask** web application. 
 
 Instead of manually writing reports after finding a bug, this tool automates the exploitation, takes a screenshot of the compromised state, and uses a local AI to generate a structured, remediation-focused report.
 
@@ -13,19 +11,17 @@ Instead of manually writing reports after finding a bug, this tool automates the
 - **Banking Application**: https://python-pickwiz.onrender.com
 - **Test Credentials**: `admin` / `12345`
 
-**Disclaimer**: This application contains known security vulnerabilities (hardcoded session tokens, broken access control). Do NOT use real credentials or sensitive data. This is strictly for demonstrating security concepts and automated testing workflows.
-
-## Features
-- **Automated Exploitation**: Uses Playwright to simulate a browser, inject payloads (e.g., hardcoded session cookies), and verify Broken Access Control.
-- **Visual Evidence**: Automatically captures a headless browser screenshot of the exploited state to serve as undeniable Proof of Concept (PoC).
-- **Local AI Reporting**: Integrates with Ollama (Llama 3.2) to generate structured, professional vulnerability reports complete with Executive Summaries and secure code remediation examples.
-- **Zero External API Dependencies**: All AI processing happens locally, ensuring sensitive vulnerability data never leaves the machine.
+## Features & Workflow
+1. **Automate Exploitation**: Playwright launches a headless browser and injects a hardcoded session cookie to bypass Broken Access Control on the `/secure-zone/bank` endpoint.
+2. **Capture Evidence**: If successful, the script automatically takes a screenshot of the compromised dashboard to serve as undeniable Proof of Concept (PoC).
+3. **AI Reporting**: Sends the technical findings to a local Ollama instance to generate a structured Markdown report featuring an Executive Summary, Business Impact, and Remediation code snippets.
 - 
-## Technology Stack
-- **Target Application**: Python Flask (Custom-built vulnerable banking app)
-- **Vulnerability Concept**: Broken Access Control / Predictable Session Tokens (Aligned with PortSwigger Web Security Academy)
-- **Automation**: Python, Playwright (Async)
-- **AI Integration**: Ollama (Local LLM), Prompt Engineering
+
+## 🛠️ Tech Stack
+- **Target Application**: Python Flask 
+- **Browser Automation**: Playwright (Async Python)
+- **AI Integration**: Ollama (Llama 3.2)
+
 - 
 ## How It Works
 1. **Targeting**: The script targets a specific endpoint (e.g., `/secure-zone/bank`).
@@ -39,26 +35,15 @@ Instead of manually writing reports after finding a bug, this tool automates the
 - [Ollama](https://ollama.com/) installed and running locally
 - The `llama3.2` model downloaded (`ollama pull llama3.2`)
 
-## Installation & Usage
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/AI-Powered-Vuln-Reporter.git
-   cd AI-Powered-Vuln-Reporter
-   ```
-   
-2.Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   playwright install chromium
-   ```
 
-3.Ensure Ollama is running in the background, then execute the script:
-   ```bash
-   python main.py
-   ```
-
-4.View the generated vulnerability_report.md in your IDE or GitHub to see the final output.
-
+## 🚀 Quick Start
+```bash
+git clone https://github.com/alisip-3/AI-Powered-Vulnerability-Reporter.git
+cd AI-Powered-Vulnerability-Reporter
+pip install -r requirements.txt
+playwright install chromium
+python main.py
+```
 
 
 ## Example Output: 
@@ -71,6 +56,7 @@ When executed successfully, the tool generates a professional report. The "Techn
 - **Discovery vs. Automation:** While automated scanners are great, understanding how to manually discover a vulnerability (e.g., inspecting network traffic for static cookies) is crucial before automating the PoC.
 - **Prompt Engineering:** Getting a useful report from an LLM requires strict prompting. Defining the exact output structure (Executive Summary, Impact, Remediation) prevents the AI from generating generic, unhelpful text.
 - **Error Handling:** Integrating headless browsers requires robust timeout and state-waiting logic to handle real-world network latency (especially on free-tier hosting like Render).
-# License
+- 
+# Disclaimer
 This project is for educational and portfolio purposes only. Always ensure you have explicit permission before testing any application.
 
