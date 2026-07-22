@@ -3,14 +3,23 @@
 An automated Proof-of-Concept (PoC) and reporting tool that identifies web vulnerabilities, captures visual evidence, and generates professional penetration testing reports using a local Large Language Model (Ollama).
 
 ## Project Overview
-This project was built to demonstrate the automation of a common security workflow: verifying a vulnerability and documenting it for developers. Instead of manually writing reports after finding a bug, this tool automates the exploitation, takes a screenshot of the compromised state, and uses a local AI to generate a structured, remediation-focused report.
+This project was built to demonstrate the automation of a common security workflow: verifying a vulnerability and documenting it for developers. Inspired by **PortSwigger Web Security Academy** labs on Authentication and Session Management, this tool targets a custom-built **Flask** web application. 
+
+Instead of manually writing reports after finding a bug, this tool automates the exploitation, takes a screenshot of the compromised state, and uses a local AI to generate a structured, remediation-focused report.
+
 
 ## Features
 - **Automated Exploitation**: Uses Playwright to simulate a browser, inject payloads (e.g., hardcoded session cookies), and verify Broken Access Control.
 - **Visual Evidence**: Automatically captures a headless browser screenshot of the exploited state to serve as undeniable Proof of Concept (PoC).
 - **Local AI Reporting**: Integrates with Ollama (Llama 3.2) to generate structured, professional vulnerability reports complete with Executive Summaries and secure code remediation examples.
 - **Zero External API Dependencies**: All AI processing happens locally, ensuring sensitive vulnerability data never leaves the machine.
-
+- 
+## Technology Stack
+- **Target Application**: Python Flask (Custom-built vulnerable banking app)
+- **Vulnerability Concept**: Broken Access Control / Predictable Session Tokens (Aligned with PortSwigger Web Security Academy)
+- **Automation**: Python, Playwright (Async)
+- **AI Integration**: Ollama (Local LLM), Prompt Engineering
+- 
 ## How It Works
 1. **Targeting**: The script targets a specific endpoint (e.g., `/secure-zone/bank`).
 2. **Exploitation**: Playwright injects a known vulnerable cookie (`session_token=secure_user_session_12345`) and navigates to the page.
