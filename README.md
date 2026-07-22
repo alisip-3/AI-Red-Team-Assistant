@@ -15,7 +15,7 @@ Instead of manually writing reports after finding a bug, this tool automates the
 1. **Automate Exploitation**: Playwright launches a headless browser and injects a hardcoded session cookie to bypass Broken Access Control on the `/secure-zone/bank` endpoint.
 2. **Capture Evidence**: If successful, the script automatically takes a screenshot of the compromised dashboard to serve as undeniable Proof of Concept (PoC).
 3. **AI Reporting**: Sends the technical findings to a local Ollama instance to generate a structured Markdown report featuring an Executive Summary, Business Impact, and Remediation code snippets.
-- 
+
 
 ## 🛠️ Tech Stack
 - **Target Application**: Python Flask 
